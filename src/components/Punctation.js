@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PunctationForm from "./PunctationForm";
 import Competitions from "../logic/honoredCompetitions/competitions.json";
+import "./Punctation.css";
 
 class Punctation extends Component {
 
@@ -46,8 +47,13 @@ class Punctation extends Component {
     render() {
         return (
             <div>
-                <PunctationForm onSubmit={this.submit}/>
-                <div>{this.props.totalPoints}</div>
+                <header>
+                    <h1 id="page-title">Licznik punktów do liceum</h1>
+                </header>
+                <section>
+                    <PunctationForm onSubmit={this.submit}/>
+                    <h2 id="total-points">Liczba punktów: {this.props.totalPoints}</h2>
+                </section>
             </div>
         );
     }

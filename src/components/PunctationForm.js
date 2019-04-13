@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, FieldArray,reduxForm, submit } from "redux-form";
 import AsyncSelect from 'react-select/lib/Async';
 import Competitions from "../logic/honoredCompetitions/competitions.json";
+import "./PunctationForm.css";
 
 let competitionsDropdownOptions = Competitions.competitions;
 let allValues = [];
@@ -33,6 +34,7 @@ const RenderSelectInput = ({input, name}) => (
          {...input}
          name={name}
          value={input.value}
+         placeholder="Wpisz nazwę konkursu"
          onChange={(value) => input.onChange(value)}
          
          loadOptions={loadOptions} 
@@ -74,10 +76,10 @@ let PunctationForm = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
+            <div class="section">
                 <h2>Egzamin ósmoklasisty</h2>
                 <div>
-                    <label>Wynik egzaminu ósmoklasisty z języka polskiego</label>
+                    <label>Wynik egzaminu ósmoklasisty z języka polskiego (w procentach)</label>
                     <div>
                         <Field
                         name="polishExam"
@@ -88,7 +90,7 @@ let PunctationForm = (props) => {
                     </div>
                 </div>
                 <div>
-                    <label>Wynik egzaminu ósmoklasisty z matematyki</label>
+                    <label>Wynik egzaminu ósmoklasisty z matematyki (w procentach)</label>
                     <div>
                         <Field
                         name="mathematicsExam"
@@ -99,7 +101,7 @@ let PunctationForm = (props) => {
                     </div>
                 </div>
                 <div>
-                    <label>Wynik egzaminu ósmoklasisty z języka angielskiego</label>
+                    <label>Wynik egzaminu ósmoklasisty z języka angielskiego (w procentach)</label>
                     <div>
                         <Field
                         name="englishExam"
@@ -110,7 +112,7 @@ let PunctationForm = (props) => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="section">
                 <h2>Oceny</h2>
                 <div>
                     <label>Ocena z języka polskiego</label>
@@ -157,22 +159,22 @@ let PunctationForm = (props) => {
                     </div>
                 </div>
             </div>
-            <div>
-                <label>Świadectwo z paskiem</label>
+            <div class="section">
+                <h2>Świadectwo z paskiem</h2>
                 <div>
                     <label><Field name="redStripe" component="input" type="radio" value="yes" onChange={() => setTimeout(() => props.dispatch(submit("punctation")), 100)} />Tak</label>
                     <label><Field name="redStripe" component="input" type="radio" value="no" onChange={() => setTimeout(() => props.dispatch(submit("punctation")), 100)}/>Nie</label>
                 </div>
             </div>
-            <div>
-                <label>Wolontariat</label>
+            <div class="section">
+                <h2>Wolontariat</h2>
                 <div>
                     <label><Field name="volounteering" component="input" type="radio" value="yes" onChange={() => setTimeout(() => props.dispatch(submit("punctation")), 100)} />Tak</label>
                     <label><Field name="volounteering" component="input" type="radio" value="no" onChange={() => setTimeout(() => props.dispatch(submit("punctation")), 100)}/>Nie</label>
                 </div>
             </div>
-            <div>
-                <label>Konkursy</label>
+            <div class="section">
+                <h2>Konkursy</h2>
                 <div>
                     <FieldArray name="competitionsList" component={renderCompetitionsList}></FieldArray>
 
