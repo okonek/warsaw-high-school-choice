@@ -54,6 +54,9 @@ class Punctation extends Component {
                     <PunctationForm onSubmit={this.submit}/>
                     <h2 id="total-points">Liczba punktów: {this.props.totalPoints}</h2>
                 </section>
+                <footer>
+                    <h2>Autor: okonek83</h2>
+                </footer>
             </div>
         );
     }
